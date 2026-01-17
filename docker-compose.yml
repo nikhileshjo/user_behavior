@@ -1,0 +1,13 @@
+services:
+  source_db:
+    image: postgres:17-alpine
+    container_name: source_db
+    environment:
+      POSTGRES_PASSWORD: admin
+      POSTGRES_USER: admin
+    volumes:
+      - ./init/source_db/:/docker-entrypoint-initdb.d/  # run init scripts
+      - ./source_db_data:/var/lib/postgresql  # persist source_db data
+      - ./data/OnlineRetail.csv:/init_data/OnlineRetail.csv  #
+    ports:
+      - 5432:5432
