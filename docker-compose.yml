@@ -22,3 +22,10 @@ services:
       - ./obj_storage_data:/mnt/data
       - ./init/obj_storage/minio:/etc/config.env
     command: server --console-address ":9001" /mnt/data
+  
+  transformer:
+    image: spark:python3
+    container_name: transformer
+    command: sleep infinity
+    volumes:
+      - ./scripts:/opt/spark/work-dir
