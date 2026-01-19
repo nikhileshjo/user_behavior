@@ -13,3 +13,13 @@ This is a data engineering project that demonstrates how we can deliver data to 
 * These are the links to it:
     - API URL: localhost:9000
     - WebUI: localhost:9001
+
+## Tranformation
+* We're using a Spark server for our transformations.
+* Scrpts that run on the server are stored in the "scripts" folder.
+
+## Datawarehouse
+* We're using Duckdb as our datawarehousing tool.
+* There are 2 layers to this container, this is a ubuntu container that installs duckdb as soon as it starts running, so you'll wait for a while before starting duckdb tasks, this will allow it some time to install, please check the logs for any issues with the installations.
+* To start using DuckDB make use of `docker exec -it datawarehouse /root/.duckdb/cli/latest/duckdb` and you'll directly enter CLI mode for duckdb.
+* We use duckdb because it's light and analytical focused, we can use it in our local machines without adding too much load to the machine.

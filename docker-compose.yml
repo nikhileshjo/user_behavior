@@ -23,9 +23,21 @@ services:
       - ./init/obj_storage/minio:/etc/config.env
     command: server --console-address ":9001" /mnt/data
   
-  transformer:
+  spark:
     image: spark:python3
-    container_name: transformer
+    container_name: spark
     command: sleep infinity
     volumes:
       - ./scripts:/opt/spark/work-dir
+  
+  datawarehouse:
+    image: ubuntu:noble-20260113
+    container_name: datawarehouse
+    volumes:
+      - ./datawarehouse_data:/duckdb_data
+      - ./init/datawarehouse/init.sh:/init/init.sh
+    ports:
+      - 22:22
+    entrypoint: ["/bin/bash", "-c"]
+    command: ["sh /init/init.sh && sleep infinity"]
+    working_dir: /duckdb_data

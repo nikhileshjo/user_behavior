@@ -1,3 +1,3 @@
-source_db_data/data
+source_db_data
 obj_storage_data
-scripts
+datawarehouse_data
