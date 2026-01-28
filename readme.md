@@ -17,6 +17,7 @@ This is a data engineering project that demonstrates how we can deliver data to 
 ## Tranformation
 * We're using a Spark server for our transformations.
 * Scrpts that run on the server are stored in the "scripts" folder.
+* The spark jobs need external packages to be installed before we can connect to Minio, an init script sets it up.
 
 ## Datawarehouse
 * We're using Duckdb as our datawarehousing tool.
